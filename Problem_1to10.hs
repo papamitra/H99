@@ -1,4 +1,6 @@
-
+myLast :: [a] -> a
+myLast (x:[]) = x 
+myLast (x:xs) = myLast xs
 
 elementAt :: [a] -> Int -> a
 elementAt [] _ = error "out of bounds"
