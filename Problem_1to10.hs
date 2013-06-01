@@ -14,3 +14,8 @@ elementAt [] _ = error "out of bounds"
 elementAt (x:_) 1 = x
 elementAt (_:xs) n = elementAt xs (n-1)
 
+-- mindmind wrote
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
