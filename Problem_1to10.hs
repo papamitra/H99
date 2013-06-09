@@ -22,3 +22,8 @@ elementAt (_:xs) n = elementAt xs (n-1)
 myLength :: [a] -> Integer
 myLength []     = 0
 myLength (x:xs) = 1 + myLength xs
+
+-- Problem 6
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome xs = xs == (reverse xs)
+
