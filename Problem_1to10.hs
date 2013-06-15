@@ -27,3 +27,9 @@ myLength (x:xs) = 1 + myLength xs
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == (reverse xs)
 
+-- Problem 7
+data NestedList a = Elem a | List [NestedList a]
+                    deriving (Show)
+flatten :: NestedList a -> [a]
+flatten (Elem e) = [e]
+flatten (List l) = concat (map flatten l)
