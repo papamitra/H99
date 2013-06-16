@@ -34,7 +34,7 @@ isPalindrome xs = xs == (reverse xs)
 
 -- Problem 7
 data NestedList a = Elem a | List [NestedList a]
---                    deriving (Show)
+                    deriving (Show)
 flatten :: NestedList a -> [a]
 flatten (Elem e) = [e]
 flatten (List l) = concat (map flatten l)
