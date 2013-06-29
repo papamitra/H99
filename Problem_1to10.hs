@@ -24,7 +24,7 @@ myLength (x:xs) = 1 + myLength xs
 
 -- Problem 5
 myReverse :: [a] -> [a]
-myReverse (x:xs) = chg xs [x]
+myReverse xs = chg xs []
   where chg [] ret = ret
         chg (x:xs) ret = chg xs (x : ret)
 
