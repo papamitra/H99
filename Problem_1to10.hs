@@ -5,7 +5,6 @@ myLast (x:[]) = x
 myLast (x:xs) = myLast xs
 
 -- Problem 2
--- mindmind wrote
 myButLast :: [a] -> a
 myButLast [] =  error "out of bounds"
 myButLast (x:[]) = error "out of bounds"
@@ -23,6 +22,12 @@ myLength :: [a] -> Integer
 myLength []     = 0
 myLength (x:xs) = 1 + myLength xs
 
+-- Problem 5
+myReverse :: [a] -> [a]
+myReverse (x:xs) = chg xs [x]
+  where chg [] ret = ret
+        chg (x:xs) ret = chg xs (x : ret)
+
 -- Problem 6
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == (reverse xs)
@@ -33,3 +38,11 @@ data NestedList a = Elem a | List [NestedList a]
 flatten :: NestedList a -> [a]
 flatten (Elem e) = [e]
 flatten (List l) = concat (map flatten l)
+
+-- Problem 8
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress (x:xs) = foldr (compress') [] xs
+  where compress' x ys | (ys == []) = [x]
+                       | (x == head ys)  = ys
+                       | otherwise = x : ys 
