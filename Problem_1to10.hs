@@ -46,3 +46,16 @@ compress (x:xs) = foldr (compress') [] xs
   where compress' x ys | (ys == []) = [x]
                        | (x == head ys)  = ys
                        | otherwise = x : ys 
+
+-- Problem 9
+pack :: (Eq a) => [a] -> [[a]]
+pack xs = foldr pack' [] xs
+  where pack' x [] = [[x]]
+        pack' x ls@(y:ys) | x == head y = (x:y):ys
+                          | otherwise = [x]:ls
+
+-- Problem 10
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode xs = map (\x -> (length x, head x)) $ pack xs
+
+
