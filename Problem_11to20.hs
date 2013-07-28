@@ -10,9 +10,10 @@ repli xs n = foldr (myRepeat n) [] xs
 
 -- Problem 16
 dropEvery :: [a] -> Int -> [a]
-dropEvery xs 0 = xs
-dropEvery [] _ = []
-dropEvery (x:xs) n = dropEvery xs (n-1)
+dropEvery xs n = reverse $ dropEvery' [] xs (n-1)
+  where dropEvery' xs [] _ = xs
+        dropEvery' xs (y:ys) 0 = dropEvery' xs ys (n-1)
+        dropEvery' xs (y:ys) n' = dropEvery' (y:xs) ys (n'-1)
 
 -- Problem 17
 split :: [a] -> Int -> ([a], [a])
