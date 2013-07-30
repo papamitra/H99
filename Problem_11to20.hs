@@ -25,3 +25,11 @@ slice xs l r = headRemove (l-1) $ take r xs
   where headRemove n str@(x:xs) | n <= 0 = str
                                 | otherwise =  headRemove (n-1) xs
 
+-- Problem 19
+rotate :: [a] -> Int -> [a]
+rotate xs n | (n < 0) = foldr (:) (take (l+n) xs) (drop (l+n) xs)
+            | (n == 0) = xs
+            | (n > 0) = foldr (:) (take n xs) (drop n xs)
+  where l = length xs
+
+
