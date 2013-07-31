@@ -27,9 +27,16 @@ slice xs l r = headRemove (l-1) $ take r xs
 
 -- Problem 19
 rotate :: [a] -> Int -> [a]
-rotate xs n | (n < 0) = foldr (:) (take (l+n) xs) (drop (l+n) xs)
+rotate xs n | (n < 0) =  (drop (l+n) xs) ++ (take (l+n) xs) 
             | (n == 0) = xs
-            | (n > 0) = foldr (:) (take n xs) (drop n xs)
+            | (n > 0) = (drop n xs) ++ (take n xs) 
   where l = length xs
 
+-- Problem 20
+removeAt :: Int -> [a] -> (a, [a])
+removeAt n xs | n <= 0 = error "Error -- N is less than 1."
+              | n > (length xs) = error "Error -- N is greater than length of list."
+              | otherwise = removeAt' n [] xs
+  where removeAt' 1 ys (x:xs) = (x, (reverse ys) ++ xs)
+        removeAt' n ys (x:xs) = removeAt' (n-1) (x:ys) xs 
 
